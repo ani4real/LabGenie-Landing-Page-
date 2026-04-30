@@ -1033,8 +1033,9 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
   .integ-ticker-wrap::before,.integ-ticker-wrap::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
   .integ-ticker-wrap::before{left:0;background:linear-gradient(to right,rgba(255,255,255,0.95),transparent)}
   .integ-ticker-wrap::after{right:0;background:linear-gradient(to left,rgba(255,255,255,0.95),transparent)}
-  .integ-ticker{display:flex;width:max-content;align-items:center}
+  .integ-ticker{display:flex;width:max-content;align-items:center;animation:integ-run 24s linear infinite;will-change:transform}
   .integ-ticker:hover{animation-play-state:paused}
+  @keyframes integ-run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .integ-logo{flex:none;width:160px;height:72px;display:flex;align-items:center;justify-content:center;padding:12px 24px;background:#FFFFFF;border:1px solid var(--border);border-radius:12px;transition:background 140ms,border-color 140ms}
   .integ-logo:hover{background:#FFFFFF;border-color:#D0D4DA}
   .integ-logo img{max-width:110px;max-height:30px;width:auto;height:auto;object-fit:contain;display:block;transition:transform 200ms}
@@ -2014,6 +2015,8 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
       <div class="trust-mark"><div class="tm-text"><div class="tm-name">Nellara</div><div class="tm-sub">Ready to Cook</div></div></div>
       <div class="trust-mark" data-kind="ring"><div class="tm-text"><div class="tm-name">Abad Fisheries</div><div class="tm-sub">Seafood Processing</div></div></div>
       <div class="trust-mark" data-kind="dot"><div class="tm-text"><div class="tm-name">Mercely's Ice Cream</div><div class="tm-sub">Frozen Desserts</div></div></div>
+      <div class="trust-mark" data-kind="square"><div class="tm-text"><div class="tm-name">Choice Canning Co</div><div class="tm-sub">Seafood</div></div></div>
+      <div class="trust-mark" data-kind="tri"><div class="tm-text"><div class="tm-name">Nandu's</div><div class="tm-sub">Seafood</div></div></div>
       <!-- set 2 -->
       <div class="trust-mark" data-kind="dot"><div class="tm-text"><div class="tm-name">Synthite Industries</div><div class="tm-sub">Spice Extracts</div></div></div>
       <div class="trust-mark" data-kind="ring"><div class="tm-text"><div class="tm-name">Arab India Spices</div><div class="tm-sub">Spices &amp; Blends</div></div></div>
@@ -2022,6 +2025,8 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
       <div class="trust-mark"><div class="tm-text"><div class="tm-name">Nellara</div><div class="tm-sub">Ready to Cook</div></div></div>
       <div class="trust-mark" data-kind="ring"><div class="tm-text"><div class="tm-name">Abad Fisheries</div><div class="tm-sub">Seafood Processing</div></div></div>
       <div class="trust-mark" data-kind="dot"><div class="tm-text"><div class="tm-name">Mercely's Ice Cream</div><div class="tm-sub">Frozen Desserts</div></div></div>
+      <div class="trust-mark" data-kind="square"><div class="tm-text"><div class="tm-name">Choice Canning Co</div><div class="tm-sub">Seafood</div></div></div>
+      <div class="trust-mark" data-kind="tri"><div class="tm-text"><div class="tm-name">Nandu's</div><div class="tm-sub">Seafood</div></div></div>
       <!-- set 3 -->
       <div class="trust-mark" data-kind="dot"><div class="tm-text"><div class="tm-name">Synthite Industries</div><div class="tm-sub">Spice Extracts</div></div></div>
       <div class="trust-mark" data-kind="ring"><div class="tm-text"><div class="tm-name">Arab India Spices</div><div class="tm-sub">Spices &amp; Blends</div></div></div>
@@ -2030,6 +2035,8 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
       <div class="trust-mark"><div class="tm-text"><div class="tm-name">Nellara</div><div class="tm-sub">Ready to Cook</div></div></div>
       <div class="trust-mark" data-kind="ring"><div class="tm-text"><div class="tm-name">Abad Fisheries</div><div class="tm-sub">Seafood Processing</div></div></div>
       <div class="trust-mark" data-kind="dot"><div class="tm-text"><div class="tm-name">Mercely's Ice Cream</div><div class="tm-sub">Frozen Desserts</div></div></div>
+      <div class="trust-mark" data-kind="square"><div class="tm-text"><div class="tm-name">Choice Canning Co</div><div class="tm-sub">Seafood</div></div></div>
+      <div class="trust-mark" data-kind="tri"><div class="tm-text"><div class="tm-name">Nandu's</div><div class="tm-sub">Seafood</div></div></div>
     </div>
   </div>
 </section>
@@ -2509,6 +2516,13 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
       <div class="integ-logo" data-brand="slack"><img src="logos/slack.png" alt="Slack"></div>
       <div class="integ-logo" data-brand="fireflies"><img src="logos/fireflies.webp" alt="Fireflies"></div>
       <div class="integ-logo" data-brand="sage"><img src="logos/sage.webp" alt="Sage"></div>
+      <div class="integ-logo" aria-hidden="true" data-brand="sap"><img src="logos/sap.webp" alt=""></div>
+      <div class="integ-logo" aria-hidden="true" data-brand="salesforce"><img src="logos/salesforce.png" alt=""></div>
+      <div class="integ-logo" aria-hidden="true" data-brand="outlook"><img src="logos/outlook.png" alt=""></div>
+      <div class="integ-logo" aria-hidden="true" data-brand="microsoft"><img src="logos/teams.png" alt=""></div>
+      <div class="integ-logo" aria-hidden="true" data-brand="slack"><img src="logos/slack.png" alt=""></div>
+      <div class="integ-logo" aria-hidden="true" data-brand="fireflies"><img src="logos/fireflies.webp" alt=""></div>
+      <div class="integ-logo" aria-hidden="true" data-brand="sage"><img src="logos/sage.webp" alt=""></div>
     </div>
   </div>
 </section>
@@ -2863,40 +2877,6 @@ document.querySelectorAll('.feat-copy ul').forEach(ul=>{
   },{threshold:0.15}).observe(vl);
 })();
 
-// ═════ Integrations: seamless infinite marquee ═════
-(function(){
-  var ticker=document.querySelector('.integ-ticker');
-  if(!ticker)return;
-  // Clone the original 7 items so we have two identical sets side-by-side
-  var originals=Array.from(ticker.children);
-  originals.forEach(function(el){
-    var c=el.cloneNode(true);
-    c.setAttribute('aria-hidden','true');
-    ticker.appendChild(c);
-  });
-  function start(){
-    // Measure the exact pixel width of one set (offsetWidth = border-box, + explicit margin)
-    var setW=0;
-    originals.forEach(function(el){
-      setW+=el.offsetWidth+16; // 16px = margin-right
-    });
-    if(setW<=0) setW=originals.length*186; // safe fallback
-    var dur=Math.round(setW/52); // ~52 px/s keeps roughly the original speed
-    // Inject a concrete pixel keyframe — no percentage ambiguity, no sub-pixel drift
-    var s=document.createElement('style');
-    s.textContent='@keyframes integ-run{from{transform:translateX(0)}to{transform:translateX(-'+setW+'px)}}';
-    document.head.appendChild(s);
-    ticker.style.animation='integ-run '+dur+'s linear infinite';
-    ticker.style.willChange='transform';
-  }
-  // Fire after full page load so layout is guaranteed to be computed
-  if(document.readyState==='complete'){start();}
-  else{window.addEventListener('load',start);}
-  // Hover pause/resume
-  var wrap=ticker.parentElement;
-  wrap.addEventListener('mouseenter',function(){ticker.style.animationPlayState='paused';});
-  wrap.addEventListener('mouseleave',function(){ticker.style.animationPlayState='running';});
-})();
 
 // Smooth scroll for anchors
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
