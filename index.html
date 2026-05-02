@@ -1226,6 +1226,7 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
 .lg-nav a .d{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:0.5}
 .lg-nav a.active{background:rgba(0,102,255,0.15);color:#fff}
 .lg-nav a.active .d{background:#0066FF;opacity:1;box-shadow:0 0 0 3px rgba(0,102,255,0.2)}
+.lg-nav-title{font:700 11px var(--font-sans);letter-spacing:0.01em;color:#fff;padding:6px 10px 4px}
 .lg-side-foot{margin-top:auto;font:500 10px var(--font-mono);color:rgba(255,255,255,0.5);letter-spacing:0.08em;text-transform:uppercase}
 .lg-status{display:flex;align-items:center;gap:8px}
 .lg-pulse{width:7px;height:7px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 0 rgba(34,197,94,0.6);animation:lg-pulse-anim 1.6s ease-out infinite}
@@ -1331,21 +1332,20 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
 .lg-dashboard-frame .lg-events b{color:#eef2ff}
 .lg-dashboard-frame .lg-events em{color:#56688e}
 
-/* ─────── TRUST WORDMARKS ─────── */
-.trust-ticker{gap:48px}
-.trust-mark{flex:none;display:flex;align-items:center;gap:12px;padding:12px 18px;border:1px solid rgba(14,20,28,0.08);border-radius:12px;background:rgba(255,255,255,0.5);transition:transform 300ms,border-color 300ms,background 300ms;height:64px}
-.trust-mark:hover{transform:translateY(-3px);border-color:rgba(0,102,255,0.3);background:#fff}
-.tm-glyph{width:28px;height:28px;flex-shrink:0;background:#0E141C;position:relative;border-radius:6px}
-.trust-mark[data-kind="dot"] .tm-glyph::after{content:'';position:absolute;inset:0;border-radius:50%;background:#0E141C}
-.trust-mark[data-kind="ring"] .tm-glyph{background:transparent;border:3px solid #0E141C;border-radius:50%}
-.trust-mark[data-kind="ring"] .tm-glyph::after{content:'';position:absolute;top:50%;left:50%;width:6px;height:6px;border-radius:50%;background:#0066FF;transform:translate(-50%,-50%)}
-.trust-mark[data-kind="square"] .tm-glyph{background:transparent;border-radius:0;display:flex;align-items:center;justify-content:center}
-.trust-mark[data-kind="square"] .tm-glyph::before{content:'';width:18px;height:18px;background:#0E141C;transform:rotate(45deg)}
-.trust-mark[data-kind="tri"] .tm-glyph{background:transparent;border-radius:0}
-.trust-mark[data-kind="tri"] .tm-glyph::before{content:'';position:absolute;inset:0;background:#0E141C;clip-path:polygon(50% 0,100% 100%,0 100%)}
-.tm-text{display:flex;flex-direction:column;line-height:1.1}
-.tm-name{font:700 13px var(--font-display);letter-spacing:-0.01em;color:#0E141C;white-space:nowrap}
-.tm-sub{font:500 9.5px var(--font-mono);color:#999;letter-spacing:0.08em;text-transform:uppercase;margin-top:3px;white-space:nowrap}
+/* ─────── TRUST LOGO CARDS ─────── */
+.trust-ticker{gap:32px}
+.trust-mark{flex:none;height:88px;padding:0 22px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(14,20,28,0.08);border-radius:12px;background:rgba(255,255,255,0.6);transition:transform 300ms,border-color 300ms,background 300ms,box-shadow 300ms;overflow:hidden}
+.trust-mark:hover{transform:translateY(-2px);border-color:rgba(0,102,255,0.18);background:#fff;box-shadow:0 4px 16px -4px rgba(14,20,28,0.08)}
+.trust-mark img{height:44px;width:auto;max-width:145px;object-fit:contain;display:block;filter:grayscale(1) opacity(0.6);transition:filter 280ms}
+.trust-mark:hover img{filter:none}
+.trust-mark[data-brand="synthite"] img{height:52px;max-width:155px}
+.trust-mark[data-brand="abad"] img{height:56px;max-width:155px}
+.trust-mark[data-brand="kitchen"] img{height:68px;max-width:120px}
+.trust-mark[data-brand="mercely"] img,.trust-mark[data-brand="choice"] img{height:62px;max-width:120px}
+.trust-mark[data-brand="kancor"] img{height:84px;max-width:120px}
+.trust-mark a{display:flex;align-items:center;justify-content:center;line-height:0;text-decoration:none;outline:none}
+.trust-mark[data-brand="arab-india"] img{filter:invert(1) grayscale(1) opacity(0.6)}
+.trust-mark[data-brand="arab-india"]:hover img{filter:invert(1) hue-rotate(180deg)}
 
 /* ─────── QUALITY AGENT — scan beam + flip pills ─────── */
 .quality-card{position:relative}
@@ -1940,10 +1940,10 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
             <aside class="lg-side">
               <div class="lg-brand"><span class="lg-brand-dot"></span>labgenie</div>
               <nav class="lg-nav">
-                <a class="active"><span class="d"></span>Overview</a>
-                <a><span class="d"></span>Quality</a>
+                <div class="lg-nav-title">Overview</div>
+                <a class="active"><span class="d"></span>Quality</a>
                 <a><span class="d"></span>Sales</a>
-                <a><span class="d"></span>Marketing</a>
+                <a><span class="d"></span>Research</a>
                 <a><span class="d"></span>Integrations</a>
               </nav>
               <div class="lg-side-foot">
@@ -2008,35 +2008,35 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
   <div class="trust-ticker-wrap">
     <div class="trust-ticker" aria-label="Trusted by">
       <!-- set 1 -->
-      <div class="trust-mark" data-kind="dot"><div class="tm-text"><div class="tm-name">Synthite Industries</div><div class="tm-sub">Spice Extracts</div></div></div>
-      <div class="trust-mark" data-kind="ring"><div class="tm-text"><div class="tm-name">Arab India Spices</div><div class="tm-sub">Spices &amp; Blends</div></div></div>
-      <div class="trust-mark" data-kind="square"><div class="tm-text"><div class="tm-name">Mane Kancor</div><div class="tm-sub">Natural Ingredients</div></div></div>
-      <div class="trust-mark" data-kind="tri"><div class="tm-text"><div class="tm-name">Kitchen Treasures</div><div class="tm-sub">Consumer Brands</div></div></div>
-      <div class="trust-mark"><div class="tm-text"><div class="tm-name">Nellara</div><div class="tm-sub">Ready to Cook</div></div></div>
-      <div class="trust-mark" data-kind="ring"><div class="tm-text"><div class="tm-name">Abad Fisheries</div><div class="tm-sub">Seafood Processing</div></div></div>
-      <div class="trust-mark" data-kind="dot"><div class="tm-text"><div class="tm-name">Mercely's Ice Cream</div><div class="tm-sub">Frozen Desserts</div></div></div>
-      <div class="trust-mark" data-kind="square"><div class="tm-text"><div class="tm-name">Choice Canning Co</div><div class="tm-sub">Seafood</div></div></div>
-      <div class="trust-mark" data-kind="tri"><div class="tm-text"><div class="tm-name">Nandu's</div><div class="tm-sub">Seafood</div></div></div>
+      <div class="trust-mark" data-brand="synthite"><a href="https://synthite.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/synthite.png" alt="Synthite Industries" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="arab-india"><a href="https://arabindia.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/arab-india-spices.png" alt="Arab India Spices" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="kancor"><a href="https://manekancor.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/mane-kancor.png" alt="Mane Kancor" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="kitchen"><a href="https://www.kitchentreasures.in/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/kitchen-treasures.jpg" alt="Kitchen Treasures" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="nellara"><a href="https://nellara.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/nellara.png" alt="Nellara" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="abad"><a href="https://abadfisheries.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/abad.png" alt="Abad Fisheries" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="mercely"><a href="https://mercelys.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/mercely.png" alt="Mercely's Ice Cream" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="choice"><a href="https://choicecanning.com/home-page/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/choice-canning.png" alt="Choice Canning Co" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="nandus"><a href="https://www.nandus.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/nandus.png" alt="Nandu's" loading="lazy"></a></div>
       <!-- set 2 -->
-      <div class="trust-mark" data-kind="dot"><div class="tm-text"><div class="tm-name">Synthite Industries</div><div class="tm-sub">Spice Extracts</div></div></div>
-      <div class="trust-mark" data-kind="ring"><div class="tm-text"><div class="tm-name">Arab India Spices</div><div class="tm-sub">Spices &amp; Blends</div></div></div>
-      <div class="trust-mark" data-kind="square"><div class="tm-text"><div class="tm-name">Mane Kancor</div><div class="tm-sub">Natural Ingredients</div></div></div>
-      <div class="trust-mark" data-kind="tri"><div class="tm-text"><div class="tm-name">Kitchen Treasures</div><div class="tm-sub">Consumer Brands</div></div></div>
-      <div class="trust-mark"><div class="tm-text"><div class="tm-name">Nellara</div><div class="tm-sub">Ready to Cook</div></div></div>
-      <div class="trust-mark" data-kind="ring"><div class="tm-text"><div class="tm-name">Abad Fisheries</div><div class="tm-sub">Seafood Processing</div></div></div>
-      <div class="trust-mark" data-kind="dot"><div class="tm-text"><div class="tm-name">Mercely's Ice Cream</div><div class="tm-sub">Frozen Desserts</div></div></div>
-      <div class="trust-mark" data-kind="square"><div class="tm-text"><div class="tm-name">Choice Canning Co</div><div class="tm-sub">Seafood</div></div></div>
-      <div class="trust-mark" data-kind="tri"><div class="tm-text"><div class="tm-name">Nandu's</div><div class="tm-sub">Seafood</div></div></div>
+      <div class="trust-mark" data-brand="synthite"><a href="https://synthite.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/synthite.png" alt="Synthite Industries" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="arab-india"><a href="https://arabindia.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/arab-india-spices.png" alt="Arab India Spices" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="kancor"><a href="https://manekancor.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/mane-kancor.png" alt="Mane Kancor" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="kitchen"><a href="https://www.kitchentreasures.in/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/kitchen-treasures.jpg" alt="Kitchen Treasures" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="nellara"><a href="https://nellara.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/nellara.png" alt="Nellara" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="abad"><a href="https://abadfisheries.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/abad.png" alt="Abad Fisheries" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="mercely"><a href="https://mercelys.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/mercely.png" alt="Mercely's Ice Cream" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="choice"><a href="https://choicecanning.com/home-page/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/choice-canning.png" alt="Choice Canning Co" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="nandus"><a href="https://www.nandus.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/nandus.png" alt="Nandu's" loading="lazy"></a></div>
       <!-- set 3 -->
-      <div class="trust-mark" data-kind="dot"><div class="tm-text"><div class="tm-name">Synthite Industries</div><div class="tm-sub">Spice Extracts</div></div></div>
-      <div class="trust-mark" data-kind="ring"><div class="tm-text"><div class="tm-name">Arab India Spices</div><div class="tm-sub">Spices &amp; Blends</div></div></div>
-      <div class="trust-mark" data-kind="square"><div class="tm-text"><div class="tm-name">Mane Kancor</div><div class="tm-sub">Natural Ingredients</div></div></div>
-      <div class="trust-mark" data-kind="tri"><div class="tm-text"><div class="tm-name">Kitchen Treasures</div><div class="tm-sub">Consumer Brands</div></div></div>
-      <div class="trust-mark"><div class="tm-text"><div class="tm-name">Nellara</div><div class="tm-sub">Ready to Cook</div></div></div>
-      <div class="trust-mark" data-kind="ring"><div class="tm-text"><div class="tm-name">Abad Fisheries</div><div class="tm-sub">Seafood Processing</div></div></div>
-      <div class="trust-mark" data-kind="dot"><div class="tm-text"><div class="tm-name">Mercely's Ice Cream</div><div class="tm-sub">Frozen Desserts</div></div></div>
-      <div class="trust-mark" data-kind="square"><div class="tm-text"><div class="tm-name">Choice Canning Co</div><div class="tm-sub">Seafood</div></div></div>
-      <div class="trust-mark" data-kind="tri"><div class="tm-text"><div class="tm-name">Nandu's</div><div class="tm-sub">Seafood</div></div></div>
+      <div class="trust-mark" data-brand="synthite"><a href="https://synthite.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/synthite.png" alt="Synthite Industries" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="arab-india"><a href="https://arabindia.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/arab-india-spices.png" alt="Arab India Spices" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="kancor"><a href="https://manekancor.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/mane-kancor.png" alt="Mane Kancor" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="kitchen"><a href="https://www.kitchentreasures.in/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/kitchen-treasures.jpg" alt="Kitchen Treasures" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="nellara"><a href="https://nellara.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/nellara.png" alt="Nellara" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="abad"><a href="https://abadfisheries.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/abad.png" alt="Abad Fisheries" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="mercely"><a href="https://mercelys.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/mercely.png" alt="Mercely's Ice Cream" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="choice"><a href="https://choicecanning.com/home-page/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/choice-canning.png" alt="Choice Canning Co" loading="lazy"></a></div>
+      <div class="trust-mark" data-brand="nandus"><a href="https://www.nandus.com/" target="_blank" rel="noopener noreferrer"><img src="Food_company_logos/nandus.png" alt="Nandu's" loading="lazy"></a></div>
     </div>
   </div>
 </section>
