@@ -1620,64 +1620,66 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
 @media(prefers-reduced-motion:reduce){#why .why-card.reveal.in{animation:none}}
 
 
-/* ─────── REVIEWS — simple landing-page grid ─────── */
-.reviews{max-width:1080px;margin:0 auto}
-.reviews-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
-.reviews-grid .review{grid-column:span 2}
-.reviews-grid .review:nth-child(4){grid-column:2/span 2}
-.reviews-grid .review:nth-child(5){grid-column:4/span 2}
-.review{background:#fff;border:1px solid rgba(14,20,28,0.08);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:18px;box-shadow:0 1px 2px rgba(14,20,28,0.04);transition:transform 320ms cubic-bezier(.2,.7,.25,1),box-shadow 320ms ease,border-color 320ms ease}
-.review:hover{transform:translateY(-3px);box-shadow:0 18px 40px -18px rgba(0,102,255,0.18);border-color:rgba(0,102,255,0.18)}
-.rv-stars{display:flex;gap:2px}
-.rv-stars svg{width:16px;height:16px;fill:#F59E0B;opacity:0;transform:scale(.6);animation:rv-star-in 380ms cubic-bezier(.2,.9,.3,1.4) backwards}
-.rv-stars svg:nth-child(1){animation-delay:calc(var(--rd,0ms) + 200ms)}
-.rv-stars svg:nth-child(2){animation-delay:calc(var(--rd,0ms) + 280ms)}
-.rv-stars svg:nth-child(3){animation-delay:calc(var(--rd,0ms) + 360ms)}
-.rv-stars svg:nth-child(4){animation-delay:calc(var(--rd,0ms) + 440ms)}
-.rv-stars svg:nth-child(5){animation-delay:calc(var(--rd,0ms) + 520ms)}
-@keyframes rv-star-in{to{opacity:1;transform:scale(1)}}
-.rv-quote{font:500 16px/1.6 var(--font-sans);color:#0E141C;margin:0;text-wrap:pretty;flex:1}
-.rv-who{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid rgba(14,20,28,0.06)}
-.rv-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;font:700 12px var(--font-display);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px -2px rgba(0,102,255,0.18)}
-.rv-meta{display:flex;flex-direction:column;gap:2px}
+/* ─── CARD CONTENT ─── */
+.rv-quote{font:500 17px/1.75 var(--font-sans);color:#0E141C;margin:0;text-wrap:pretty;flex:1}
+.rv-who{display:flex;align-items:center;padding-top:16px;border-top:1px solid rgba(14,20,28,0.15)}
+.rv-meta{display:flex;flex-direction:column;gap:3px}
 .rv-n{font:600 14px var(--font-sans);color:#0E141C;line-height:1.2}
-.rv-r{font:500 11px var(--font-mono);color:#7A828C;letter-spacing:0.04em;text-transform:uppercase}
-.review.reveal{opacity:0;filter:blur(3px);transition:opacity 700ms cubic-bezier(.2,.7,.25,1) var(--rd,0ms),transform 800ms cubic-bezier(.34,1.35,.64,1) var(--rd,0ms),filter 600ms ease var(--rd,0ms)}
-.review.reveal.in{opacity:1;transform:none;filter:blur(0)}
-@media(max-width:960px){
-  .reviews-grid{grid-template-columns:repeat(2,1fr)}
-  .reviews-grid .review,.reviews-grid .review:nth-child(4),.reviews-grid .review:nth-child(5){grid-column:span 1}
-  .review{padding:24px}
-}
-@media(max-width:600px){
-  .reviews-grid{grid-template-columns:1fr}
-  .review{padding:22px}
-}
+.rv-r{font:500 11px var(--font-mono);color:rgba(14,20,28,0.55);letter-spacing:0.04em;text-transform:uppercase}
 
-/* ── Testimonials: enhanced entrance & ambient animations ── */
-.review{position:relative;overflow:hidden}
-/* Alternating directional entrance — left / up / right, cycling across rows */
-.review.reveal:nth-child(3n-2){transform:translateX(-54px) translateY(28px) rotate(-3deg) scale(.91)}
-.review.reveal:nth-child(3n-1){transform:translateY(68px) scale(.87)}
-.review.reveal:nth-child(3n){transform:translateX(54px) translateY(28px) rotate(3deg) scale(.91)}
-.review.reveal.in{opacity:1;transform:none;filter:blur(0)}
-/* Decorative large quote mark in card background */
-.review::before{content:'\201C';position:absolute;right:18px;top:10px;font:900 96px/1 var(--font-display);color:var(--rv-c,#0066FF);opacity:0;pointer-events:none;transform:scale(.85) translateY(-8px);transition:opacity .7s ease calc(var(--rd,0ms) + 350ms),transform .7s cubic-bezier(.2,.7,.25,1) calc(var(--rd,0ms) + 350ms)}
-.review.in::before{opacity:.055;transform:scale(1) translateY(0)}
-/* Colored left accent stripe that draws in on reveal */
-.review::after{content:'';position:absolute;left:0;top:20px;bottom:20px;width:3px;border-radius:0 2px 2px 0;background:linear-gradient(180deg,var(--rv-c,#0066FF),rgba(0,102,255,0));transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.2,.7,.25,1) calc(var(--rd,0ms) + 180ms)}
-.review.in::after{transform:scaleY(1)}
-/* Per-card accent colours matched to avatar gradients */
-#testimonials .reviews-grid .review:nth-child(1){--rv-c:#0066FF}
-#testimonials .reviews-grid .review:nth-child(2){--rv-c:#10B981}
-#testimonials .reviews-grid .review:nth-child(3){--rv-c:#6366F1}
-#testimonials .reviews-grid .review:nth-child(4){--rv-c:#F43F5E}
-#testimonials .reviews-grid .review:nth-child(5){--rv-c:#F59E0B}
-/* Avatar pulse ring */
-.rv-av{position:relative}
-.rv-av::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--g1,rgba(0,102,255,.4));opacity:0;animation:rv-ring 3.2s ease-in-out infinite}
-@keyframes rv-ring{0%,100%{opacity:0;transform:scale(1)}50%{opacity:.4;transform:scale(1.18)}}
-@media(prefers-reduced-motion:reduce){.rv-av::after{animation:none}}
+/* ─── FLASHCARD TESTIMONIALS ─── */
+.fc-stage{max-width:660px;margin:0 auto}
+.fc-deck{position:relative;min-height:300px;perspective:1400px}
+.fc-card{position:absolute;left:0;top:0;width:100%;background:#fff;border:1px solid rgba(14,20,28,0.08);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:20px;overflow:hidden;will-change:transform,opacity;transition:transform 520ms cubic-bezier(.34,1.1,.64,1),opacity 420ms ease,box-shadow 300ms ease}
+/* Stack positions */
+.fc-card[data-pos="top"]{transform:translateY(0) scale(1) rotate(0deg);opacity:1;z-index:4;box-shadow:0 20px 60px -16px rgba(0,102,255,.18),0 0 0 1px rgba(255,255,255,.6) inset}
+.fc-card[data-pos="back1"]{transform:translateY(18px) scale(.96) rotate(-2deg);opacity:1;z-index:3;box-shadow:0 8px 24px -12px rgba(14,20,28,.10)}
+.fc-card[data-pos="back2"]{transform:translateY(34px) scale(.92) rotate(1.5deg);opacity:.75;z-index:2;box-shadow:0 4px 12px -8px rgba(14,20,28,.08)}
+.fc-card[data-pos="hidden"]{transform:translateY(50px) scale(.88);opacity:0;z-index:1;pointer-events:none}
+/* Exit: lifts up then arcs back behind the deck with 3D perspective */
+.fc-card[data-pos="exit"]{animation:fc-arc-to-back 560ms cubic-bezier(.4,0,.2,1) forwards;transition:none;pointer-events:none;z-index:5}
+@keyframes fc-arc-to-back{
+  0%  {transform:translateY(0)     scale(1)    rotateX(0deg)   rotateZ(0deg);  opacity:1}
+  28% {transform:translateY(-54px) scale(1.06) rotateX(-7deg)  rotateZ(-1.5deg);opacity:1}
+  62% {transform:translateY(-20px) scale(.95)  rotateX(26deg)  rotateZ(1deg);  opacity:.5}
+  100%{transform:translateY(46px)  scale(.81)  rotateX(58deg)  rotateZ(2.5deg);opacity:0}
+}
+.fc-card[data-pos="enter"]{transform:translateY(110px) scale(.88);opacity:0;z-index:1;pointer-events:none}
+.fc-card[data-pos="enter-top"]{transform:translateY(-90px) scale(.95) rotate(5deg);opacity:0;z-index:5;pointer-events:none}
+.fc-card[data-pos="exit-bottom"]{transform:translateY(90px) scale(.86);opacity:0;z-index:1;pointer-events:none}
+/* Scroll entrance */
+.fc-stage:not(.in) .fc-card{transform:translateY(120px) scale(.88) !important;opacity:0 !important}
+/* Hover: lift + star field activates */
+.fc-card[data-pos="top"]:hover{box-shadow:0 28px 70px -16px rgba(0,102,255,.22);transform:translateY(-5px) scale(1) rotate(0deg)}
+.fc-notrans{transition:none !important}
+/* Decorative quote mark */
+.fc-card::before{content:'\201C';position:absolute;right:18px;top:6px;font:900 96px/1 var(--font-display);color:rgba(0,102,255,.04);pointer-events:none}
+/* Left accent stripe */
+.fc-card::after{content:'';position:absolute;left:0;top:20px;bottom:20px;width:3px;border-radius:0 2px 2px 0;background:linear-gradient(180deg,var(--rv-c,#0066FF),transparent)}
+#testimonials .fc-card:nth-child(1){--rv-c:#0066FF}
+#testimonials .fc-card:nth-child(2){--rv-c:#10B981}
+#testimonials .fc-card:nth-child(3){--rv-c:#6366F1}
+#testimonials .fc-card:nth-child(4){--rv-c:#F59E0B}
+/* Gold floating stars — always ambient inside the card */
+.fc-star{position:absolute;pointer-events:none;left:var(--x,50%);top:var(--y,70%);width:var(--sz,10px);height:var(--sz,10px);background:rgba(245,158,11,var(--b,.75));clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);filter:drop-shadow(0 0 var(--glow,3px) rgba(245,158,11,.6));animation:fc-star-float var(--spd,6s) ease-in-out var(--dl,0s) infinite}
+@keyframes fc-star-float{
+  0%  {transform:translateY(0)    rotate(0deg)              scale(.7); opacity:0}
+  12% {opacity:var(--b,.75)}
+  50% {transform:translateY(-45px) rotate(var(--r,22deg))   scale(1.15)}
+  88% {opacity:var(--b,.75)}
+  100%{transform:translateY(-90px) rotate(var(--r2,40deg))  scale(.6); opacity:0}
+}
+@media(prefers-reduced-motion:reduce){.fc-star{animation:none !important}}
+/* Navigation */
+.fc-nav{display:flex;align-items:center;justify-content:center;gap:20px;padding-top:60px}
+.fc-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(14,20,28,.12);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 200ms,background 200ms,transform 200ms,box-shadow 200ms;color:#0E141C;flex-shrink:0}
+.fc-btn:hover{border-color:#0066FF;background:rgba(0,102,255,.05);transform:scale(1.1);box-shadow:0 4px 16px -4px rgba(0,102,255,.22)}
+.fc-btn:active{transform:scale(.94)}
+.fc-btn svg{width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fc-pips{display:flex;gap:6px;align-items:center}
+.fc-pip{width:7px;height:7px;border-radius:50%;background:rgba(14,20,28,.15);border:0;padding:0;cursor:pointer;transition:background 300ms,width 300ms,border-radius 300ms}
+.fc-pip.active{width:22px;border-radius:4px;background:#0066FF}
+@media(max-width:600px){.fc-card{padding:24px}.fc-nav{padding-top:52px}}
 
 /* ─────── TESTIMONIALS — CINEMA (legacy) ─────── */
 .test-cinema{position:relative;max-width:1080px;margin:0 auto;padding:32px 0 24px;overflow:visible}
@@ -1891,7 +1893,7 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
     <div class="logo"><a href="#"><span class="dot"></span>labgenie</a> <a class="by" href="https://www.datadivr.com/" target="_blank" rel="noopener noreferrer">by <img src="Vector.svg" alt="datadivr" class="dd-logo"></a></div>
     <div class="nav-links">
       <a href="#product">Product</a>
-      <a href="#why">Cream of the Crop</a>
+      <a href="#why">Why Lab Genie</a>
       <a href="#integrations">Integrations</a>
       <a href="#customers">Customers</a>
       <a href="#testimonials">Testimonials</a>
@@ -2381,7 +2383,7 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
 <section class="section" id="why">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow reveal">Cream of the Crop</div>
+      <div class="eyebrow reveal">Why Lab Genie</div>
       <h2 class="h-section reveal">Made for how F&amp;B actually works</h2>
       <p class="lede reveal">Built for F&amp;B leaders who need more than generic tools.</p>
     </div>
@@ -2443,7 +2445,7 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
             <circle cx="14" cy="34" r="1.6" fill="currentColor"/>
           </svg>
         </div>
-        <h4>Augmented Assistants for teams without AI literacy</h4>
+        <h4>Augmented assistants for teams without AI literacy</h4>
         <p>No prompts. Your analysts upload a document, click a button, and get the result.</p>
         <span class="why-trace"></span>
       </div>
@@ -2558,82 +2560,45 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
       <p class="lede reveal">What teams that use it daily are saying.</p>
     </div>
 
-    <div class="reviews" id="testDeck">
-      <div class="reviews-grid">
-        <article class="review reveal" style="--rd:0ms">
-          <div class="rv-stars" aria-label="5 out of 5">
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-          </div>
+    <div class="fc-stage" id="fcStage">
+      <div class="fc-deck" id="fcDeck">
+        <article class="fc-card">
           <p class="rv-quote">The Quality Agent turned what used to be a two-day comparison into a five-minute task. My team spends their time on actual quality decisions now, not paperwork.</p>
           <div class="rv-who">
-            <span class="rv-av" style="--g1:#0066FF;--g2:#3A8BFF">MM</span>
-            <span class="rv-meta"><span class="rv-n">M.M.</span><span class="rv-r">Head of Quality</span></span>
+<span class="rv-meta"><span class="rv-n">Manjula Venugopal</span><span class="rv-r">Asst. General Manager – Quality Assurance, Synthite Industries</span></span>
           </div>
         </article>
 
-        <article class="review reveal" style="--rd:120ms">
-          <div class="rv-stars" aria-label="5 out of 5">
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-          </div>
+        <article class="fc-card">
           <p class="rv-quote">We were responding to customer queries in four to six hours. With the Sales Agent, we are now answering in minutes. Faster response is winning us deals.</p>
           <div class="rv-who">
-            <span class="rv-av" style="--g1:#10B981;--g2:#0066FF">SS</span>
-            <span class="rv-meta"><span class="rv-n">S.S.</span><span class="rv-r">Sales Director</span></span>
+<span class="rv-meta"><span class="rv-n">Sajan Alias</span><span class="rv-r">Deputy General Manager, Synthite Industries</span></span>
           </div>
         </article>
 
-        <article class="review reveal" style="--rd:240ms">
-          <div class="rv-stars" aria-label="5 out of 5">
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-          </div>
+        <article class="fc-card">
           <p class="rv-quote">Datadivr has given me a senior data partner who could think like a founder. We onboarded fast, got clean data and real insights, and it became the cornerstone of our product.</p>
           <div class="rv-who">
-            <span class="rv-av" style="--g1:#6366F1;--g2:#8B5CF6">HS</span>
-            <span class="rv-meta"><span class="rv-n">Hadrien Servy</span><span class="rv-r">Founder, Stealth AI</span></span>
+<span class="rv-meta"><span class="rv-n">Hadrien Servy</span><span class="rv-r">Founder, Stealth AI</span></span>
           </div>
         </article>
 
-        <article class="review reveal" style="--rd:360ms">
-          <div class="rv-stars" aria-label="5 out of 5">
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-          </div>
-          <p class="rv-quote">What Lab Genie is doing for F&amp;B manufacturing is genuinely new. The Fast UIs mean my team actually uses it.</p>
-          <div class="rv-who">
-            <span class="rv-av" style="--g1:#F43F5E;--g2:#0066FF">VJ</span>
-            <span class="rv-meta"><span class="rv-n">V.J.</span><span class="rv-r">Senior Director</span></span>
-          </div>
-        </article>
-
-        <article class="review reveal" style="--rd:480ms">
-          <div class="rv-stars" aria-label="5 out of 5">
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-            <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.6 3 10.1l.6-3.3L1.2 4.5 4.5 4z"/></svg>
-          </div>
+        <article class="fc-card">
           <p class="rv-quote">Partnering with Datadivr has transformed our business. Forecasting sales, smarter routes and better shelf execution helped us scale to over $50M and deliver sales growth 4x beyond expectations, week after week.</p>
           <div class="rv-who">
-            <span class="rv-av" style="--g1:#F59E0B;--g2:#E06C4B">AM</span>
-            <span class="rv-meta"><span class="rv-n">Ashok Mani</span><span class="rv-r">Managing Director &amp; CEO, Intergrow Brands</span></span>
+<span class="rv-meta"><span class="rv-n">Ashok Mani</span><span class="rv-r">Managing Director &amp; CEO, Intergrow Brands</span></span>
           </div>
         </article>
+      </div>
+
+      <div class="fc-nav">
+        <button class="fc-btn" id="fcPrev" aria-label="Previous review">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="fc-pips" id="fcPips"></div>
+        <button class="fc-btn" id="fcNext" aria-label="Next review">
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
       </div>
     </div>
     </div>
@@ -2645,7 +2610,7 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 13px; }
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow reveal">Value capture</div>
-      <h2 class="h-section reveal">Why choose Lab Genie</h2>
+      <h2 class="h-section reveal">Built to deliver</h2>
       <p class="lede reveal">Lab Genie delivers measurable impact across five areas. Our enterprise deployments typically start seeing returns within weeks.</p>
     </div>
     <div class="value-list">
@@ -3043,6 +3008,159 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     });
     btn.addEventListener('mouseleave', ()=>{ btn.style.transform=''; });
   });
+})();
+</script>
+<script>
+// ─── Flashcard testimonials ───
+(function(){
+  var stage = document.getElementById('fcStage');
+  var deck  = document.getElementById('fcDeck');
+  if(!stage || !deck) return;
+  var cards = Array.from(deck.querySelectorAll('.fc-card'));
+  var N = cards.length;
+  if(!N) return;
+  var active = 0, busy = false, DUR = 520;
+
+  function dist(i){ return ((i - active) % N + N) % N; }
+  function posName(d){ return ['top','back1','back2','hidden'][Math.min(d,3)]; }
+
+  function setPos(card, pos, instant){
+    if(instant){
+      card.classList.add('fc-notrans');
+      card.dataset.pos = pos;
+      card.offsetHeight; // force reflow
+      card.classList.remove('fc-notrans');
+    } else {
+      card.dataset.pos = pos;
+    }
+  }
+
+  function applyAll(){
+    cards.forEach(function(c,i){ c.dataset.pos = posName(dist(i)); });
+    updatePips();
+  }
+
+  function syncHeight(){
+    var maxH = 0;
+    cards.forEach(function(c){ maxH = Math.max(maxH, c.offsetHeight); });
+    if(maxH > 0) deck.style.minHeight = (maxH + 48) + 'px';
+  }
+
+  function go(dir){
+    if(busy) return;
+    busy = true;
+    var prev = active;
+    active = ((active + dir) % N + N) % N;
+
+    if(dir === 1){
+      // old top exits upward; card entering back2 comes from below
+      var enterIdx = ((active + 2) % N);
+      setPos(cards[enterIdx], 'enter', true);
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){
+        setPos(cards[prev], 'exit');
+        cards.forEach(function(c,i){
+          if(i !== prev && i !== enterIdx) c.dataset.pos = posName(dist(i));
+        });
+        cards[enterIdx].dataset.pos = posName(dist(enterIdx));
+        updatePips();
+        setTimeout(function(){
+          setPos(cards[prev], 'hidden', true);
+          busy = false;
+        }, DUR + 60);
+      });});
+    } else {
+      // new top enters from above; old back2 exits downward
+      var exitIdx = ((prev + 2) % N);
+      setPos(cards[active], 'enter-top', true);
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){
+        setPos(cards[exitIdx], 'exit-bottom');
+        cards.forEach(function(c,i){
+          if(i !== exitIdx) c.dataset.pos = posName(dist(i));
+        });
+        updatePips();
+        setTimeout(function(){
+          setPos(cards[exitIdx], 'hidden', true);
+          busy = false;
+        }, DUR + 60);
+      });});
+    }
+  }
+
+  // Pips
+  var pipsEl = document.getElementById('fcPips');
+  function buildPips(){
+    cards.forEach(function(_,i){
+      var b = document.createElement('button');
+      b.className = 'fc-pip';
+      b.setAttribute('aria-label', 'Review ' + (i+1));
+      b.addEventListener('click', function(){
+        if(busy) return;
+        var d = dist(i);
+        if(d === 0) return;
+        go(d <= N/2 ? 1 : -1);
+      });
+      pipsEl.appendChild(b);
+    });
+  }
+  function updatePips(){
+    Array.from(pipsEl.children).forEach(function(p,i){ p.classList.toggle('active', i===active); });
+  }
+
+  // Scroll entrance — staggered cascade from below
+  var io = new IntersectionObserver(function(entries){
+    if(!entries[0].isIntersecting) return;
+    cards.forEach(function(c,i){ c.style.transitionDelay = (i*90)+'ms'; });
+    stage.classList.add('in');
+    setTimeout(function(){ cards.forEach(function(c){ c.style.transitionDelay=''; }); }, N*90 + DUR);
+    io.disconnect();
+  }, {threshold: 0.15});
+  io.observe(stage);
+
+  // Inject 30 gold floating star shapes spread across each card
+  cards.forEach(function(card){
+    for(var i=0;i<30;i++){
+      var s=document.createElement('span');
+      s.className='fc-star';
+      var rot=(Math.random()*30-10).toFixed(1);
+      s.style.cssText=
+        '--x:'+(Math.random()*90+2).toFixed(1)+'%;'
+        +'--y:'+(Math.random()*80+10).toFixed(1)+'%;'
+        +'--sz:'+(Math.random()*9+5).toFixed(1)+'px;'
+        +'--b:'+(0.25+Math.random()*0.45).toFixed(2)+';'
+        +'--glow:'+(2+Math.random()*3).toFixed(1)+'px;'
+        +'--spd:'+(4+Math.random()*6).toFixed(1)+'s;'
+        +'--dl:'+(Math.random()*7).toFixed(1)+'s;'
+        +'--r:'+rot+'deg;'
+        +'--r2:'+(+rot+(Math.random()*20+10)).toFixed(1)+'deg';
+      card.appendChild(s);
+    }
+  });
+
+  // Init
+  buildPips();
+  applyAll();
+  requestAnimationFrame(function(){ syncHeight(); });
+  window.addEventListener('resize', function(){ syncHeight(); });
+
+  // Buttons
+  document.getElementById('fcPrev').addEventListener('click', function(){ go(-1); });
+  document.getElementById('fcNext').addEventListener('click', function(){ go(1); });
+
+  // Keyboard — only when section is visible
+  window.addEventListener('keydown', function(e){
+    var r = stage.getBoundingClientRect();
+    if(r.bottom < 0 || r.top > window.innerHeight) return;
+    if(e.key === 'ArrowRight') go(1);
+    if(e.key === 'ArrowLeft') go(-1);
+  });
+
+  // Swipe
+  var tx = 0;
+  deck.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+  deck.addEventListener('touchend',   function(e){
+    var dx = e.changedTouches[0].clientX - tx;
+    if(Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+  }, {passive:true});
 })();
 </script>
 </body></html>
